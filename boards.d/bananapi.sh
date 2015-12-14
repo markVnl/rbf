@@ -10,4 +10,18 @@ ROOTUUID=$7
 #Enter Custom Commands Below
 dd if=$UBOOT of=$DISKIMAGE bs=1024 seek=8 conv=fsync,notrunc
 
+# Removing RBF tmp repos
+/bin/rm $ROOTPATH/etc/yum.repos.d/*_rbf.repo
+echo "a7-bp" > $ROOTPATH/etc/yum/vars/infra
+
+cat > $ROOTPATH/root/README << EOF
+== CentOS 7 userland ==
+
+If you want to automatically resize your / partition, just type the following (as root user):
+touch /.rootfs-repartition
+systemctl reboot
+
+
+EOF
+
 exit 0

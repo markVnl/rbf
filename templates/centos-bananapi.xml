@@ -1,9 +1,9 @@
 <template>    
     <board>bananapi</board>
-    <image size="4G" type="raw" path="centos-7-bananapi.img"></image>
+    <image size="3G" type="raw" path="CentOS-7-core-bananapi.img"></image>
     <partitions>
-        <partition size="500M" type="primary" fs="ext3" mountpoint="/boot"></partition>
-        <partition size="1G" type="primary" fs="swap" mountpoint="swap"></partition>
+        <partition size="350M" type="primary" fs="ext3" mountpoint="/boot"></partition>
+        <partition size="512M" type="primary" fs="swap" mountpoint="swap"></partition>
         <partition size="2G" type="primary" fs="ext4" mountpoint="/"></partition>
     </partitions>
     
@@ -11,7 +11,7 @@
         <installer>yum</installer>
         <releasever>7</releasever>
         <group>core</group>
-        <package>net-tools</package>
+        <package>net-tools,rootfs-resize</package>
     </packages>
 
     <stage1loader>none</stage1loader>
@@ -23,8 +23,8 @@
 
     <config>
         <hostname>bananapi</hostname>
-        <selinux>disabled</selinux>
-        <rootpass>password1234</rootpass>
+        <selinux>permissive</selinux>
+        <rootpass>centos</rootpass>
         <rootsshkey>none</rootsshkey>
         <network>
             <interface name="eth0" config="dhcp">
@@ -37,9 +37,9 @@
     
     <distro>centos</distro>
     <repos>
-        <repo name="c7buildroot" path="http://armv7.dev.centos.org/repodir/c7-buildroot/"></repo>
-        <repo name="c7pass1" path="http://armv7.dev.centos.org/repodir/c7-pass-1/"></repo>
-        <repo name="comps" path="http://armv7.dev.centos.org/repodir/comps/"></repo>
+        <repo name="centos-base" path="http://armv7.dev.centos.org/repos/7.2.1511/os/armhfp/"></repo>
+        <repo name="centos-extras" path="http://armv7.dev.centos.org/repos/7.2.1511/extras/armhfp/"></repo>
+        <repo name="centos-arm-kernels" path="http://armv7.dev.centos.org/repos/7/kernel/armhfp/kernel-4.2.3/"></repo>
     </repos>
     <workdir>/tmp/temp</workdir>
     <extlinuxconf>true</extlinuxconf>

@@ -1,6 +1,7 @@
 umount /tmp/temp/boot
 umount /tmp/temp/proc
-umount /tmp/temp
-[ -b /dev/loop0 ] && losetup -d /dev/loop0 &>> rbf.log 
+umount -l /tmp/temp/dev/
 sleep 2
+umount /tmp/temp
+[ -b /dev/loop2 ] && losetup -d /dev/loop2 &>> rbf.log
 exit 0
