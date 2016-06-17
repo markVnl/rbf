@@ -1,8 +1,8 @@
 <template>    
     <board>cubietruck</board>
-    <image size="3G" type="raw" path="CentOS-7-core-cubietruck.img"></image>
+    <image size="3G" type="raw" path="CentOS-Userland-7-armv7hl-Minimal-YM-CubieTruck.img"></image>
     <partitions>
-        <partition size="300M" type="primary" fs="ext3" mountpoint="/boot"></partition>
+        <partition size="500M" type="primary" fs="ext3" mountpoint="/boot"></partition>
         <partition size="512M" type="primary" fs="swap" mountpoint="swap"></partition>
         <partition size="2G" type="primary" fs="ext4" mountpoint="/"></partition>
     </partitions>
@@ -11,7 +11,7 @@
         <installer>yum</installer>
         <releasever>7</releasever>
         <group>core</group>
-        <package>net-tools,rootfs-resize</package>
+        <package>net-tools,rootfs-resize,chrony</package>
     </packages>
 
     <stage1loader>none</stage1loader>
@@ -37,9 +37,10 @@
     
     <distro>centos</distro>
     <repos>
-        <repo name="centos-base" path="http://armv7.dev.centos.org/repos/7/tosign/os/armhfp/"></repo>
+        <repo name="centos-base" path="http://armv7.dev.centos.org/repos/7/os/armhfp/"></repo>
         <repo name="centos-extras" path="http://armv7.dev.centos.org/repos/7/extras/armhfp/"></repo>
-        <repo name="centos-arm-kernels" path="http://armv7.dev.centos.org/repos/7/kernel/armhfp/kernel-4.2.3/"></repo>
+        <repo name="centos-updates" path="http://armv7.dev.centos.org/repos/7/updates/armhfp/"></repo>
+        <repo name="centos-arm-kernels" path="http://armv7.dev.centos.org/repodir/arm-kernels/4.4.12-301/"></repo>
     </repos>
     <workdir>/tmp/temp</workdir>
     <extlinuxconf>true</extlinuxconf>
