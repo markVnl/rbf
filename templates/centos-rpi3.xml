@@ -2,7 +2,7 @@
     <board>rpi3</board>
     <image size="3G" type="raw" path="CentOS-Userland-7-armv7hl-Minimal-YM-RaspberryPi3.img"></image>
     <partitions>
-        <partition size="300M" type="primary" fs="vfat" mountpoint="/boot"></partition>
+        <partition size="500M" type="primary" fs="vfat" mountpoint="/boot"></partition>
         <partition size="512M" type="primary" fs="swap" mountpoint="swap"></partition>
         <partition size="2G" type="primary" fs="ext4" mountpoint="/"></partition>
     </partitions>
@@ -11,7 +11,7 @@
         <installer>yum</installer>
         <releasever>7</releasever>
         <group>core</group>
-        <package>raspberrypi2-firmware,raspberrypi2-kernel-firmware,net-tools,rootfs-resize,chrony</package>
+        <package>raspberrypi2-firmware,raspberrypi2-kernel-firmware,net-tools,cloud-utils-growpart,chrony</package>
     </packages>
 
     <stage1loader>none</stage1loader>
@@ -40,7 +40,7 @@
         <repo name="centos-base" path="http://armv7.dev.centos.org/repos/7/os/armhfp/"></repo>
         <repo name="centos-extras" path="http://armv7.dev.centos.org/repos/7/extras/armhfp/"></repo>
         <repo name="centos-updates" path="http://armv7.dev.centos.org/repos/7/updates/armhfp/"></repo>
-        <repo name="rpi2-kernel" path="http://armv7.dev.centos.org/repodir/arm-kernels/rpi2-4.1.19-2/"></repo>
+        <repo name="rpi2-kernel" path="http://armv7.dev.centos.org/repodir/arm-kernels/rpi2-4.4.14/"></repo>
     </repos>
 
     <workdir>/tmp/temp</workdir>

@@ -43,8 +43,7 @@ cat > $ROOTPATH/root/README << EOF
 == CentOS 7 userland ==
 
 If you want to automatically resize your / partition, just type the following (as root user):
-touch /.rootfs-repartition
-systemctl reboot
+/usr/local/bin/rootfs-expand
 
 For wifi on the rpi3, just proceed with those steps : 
 
@@ -54,8 +53,38 @@ curl --location https://github.com/RPi-Distro/firmware-nonfree/raw/master/brcm80
 
 systemctl reboot
 
+
+
+
+EOF
+
+cat > $ROOTPATH/etc/yum.repos.d/kernel.repo <<EOF
+[kernel]
+name=kernel repo for RaspberryPi 2 and 3
+baseurl=http://mirror.centos.org/altarch/7/kernel/armhfp/kernel-rpi2/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+       file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-AltArch-Arm32
+
 EOF
 
 
+cat > $ROOTPATH/usr/local/bin/rootfs-expand << EOF
+#!/bin/bash
+clear
+echo "Extending partition 3 to max size ...."
+growpart /dev/mmcblk0 3
+echo "Resizing ext4 filesystem ..."
+resize2fs /dev/mmcblk0p3
+echo "Done."
+df -h |grep mmcblk0p3
+
+EOF
+
+chmod +x $ROOTPATH/usr/local/bin/rootfs-expand
 
 exit 0
+
+
+
