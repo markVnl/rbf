@@ -14,23 +14,14 @@ dd if=$UBOOT of=$DISKIMAGE bs=1024 seek=8 conv=fsync,notrunc
 # Removing RBF tmp repos
 /bin/rm $ROOTPATH/etc/yum.repos.d/*_rbf.repo
 echo "a7-ct" > $ROOTPATH/etc/yum/vars/infra
+echo generic > $ROOTPATH/etc/yum/vars/kvariant
+
 
 cat > $ROOTPATH/root/README << EOF
 == CentOS 7 userland ==
 
 If you want to automatically resize your / partition, just type the following (as root user):
 /usr/local/bin/rootfs-expand
-
-EOF
-
-cat > $ROOTPATH/etc/yum.repos.d/kernel.repo <<EOF
-[kernel]
-name=kernel repo for armhfp
-baseurl=http://mirror.centos.org/altarch/7/kernel/armhfp/kernel-upstream/
-gpgcheck=1
-enabled=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-       file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-AltArch-Arm32
 
 EOF
 

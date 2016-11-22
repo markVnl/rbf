@@ -38,6 +38,7 @@ curl --location https://github.com/raspberrypi/firmware/raw/master/boot/bcm2710-
 # Removing RBF tmp repos
 /bin/rm $ROOTPATH/etc/yum.repos.d/*_rbf.repo
 echo "a7-ct" > $ROOTPATH/etc/yum/vars/infra
+echo rpi2 > $ROOTPATH/etc/yum/vars/kvariant
 
 cat > $ROOTPATH/root/README << EOF
 == CentOS 7 userland ==
@@ -55,17 +56,6 @@ systemctl reboot
 
 
 
-
-EOF
-
-cat > $ROOTPATH/etc/yum.repos.d/kernel.repo <<EOF
-[kernel]
-name=kernel repo for RaspberryPi 2 and 3
-baseurl=http://mirror.centos.org/altarch/7/kernel/armhfp/kernel-rpi2/
-gpgcheck=1
-enabled=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-       file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-AltArch-Arm32
 
 EOF
 
