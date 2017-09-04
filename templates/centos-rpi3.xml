@@ -40,8 +40,7 @@
         <repo name="centos-base" path="http://armv7.dev.centos.org/repos/7/os/armhfp/"></repo>
         <repo name="centos-extras" path="http://armv7.dev.centos.org/repos/7/extras/armhfp/"></repo>
         <repo name="centos-updates" path="http://armv7.dev.centos.org/repos/7/updates/armhfp/"></repo>
-        <repo name="rpi2-kernel" path="http://armv7.dev.centos.org/repodir/arm-kernels/rpi2-4.4.33/"></repo>
-        <repo name="centos-cr" path="http://armv7.dev.centos.org/repodir/c71611-pass-1/"></repo>
+        <repo name="rpi2-kernel" path="https://armv7.dev.centos.org/repos/7/kernel/armhfp/kernel-rpi2/"></repo>
     </repos>
 
     <workdir>/tmp/temp</workdir>

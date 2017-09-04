@@ -35,7 +35,7 @@ sed -i 's/IPv6_rpfilter=yes/IPv6_rpfilter=no/' $ROOTPATH/etc/firewalld/firewalld
 # Removing RBF tmp repos
 /bin/rm $ROOTPATH/etc/yum.repos.d/*_rbf.repo
 echo "a7-ct" > $ROOTPATH/etc/yum/vars/infra
-echo rpi2 > $ROOTPATH/etc/yum/vars/kvariant
+echo "rpi2" > $ROOTPATH/etc/yum/vars/kvariant
 
 cat > $ROOTPATH/root/README << EOF
 == CentOS 7 userland ==
@@ -44,20 +44,6 @@ If you want to automatically resize your / partition, just type the following (a
 /usr/local/bin/rootfs-expand
 
 EOF
-
-cat > $ROOTPATH/usr/local/bin/rootfs-expand << EOF
-#!/bin/bash
-clear
-echo "Extending partition 3 to max size ...."
-growpart /dev/mmcblk0 3
-echo "Resizing ext4 filesystem ..."
-resize2fs /dev/mmcblk0p3
-echo "Done."
-df -h |grep mmcblk0p3
-
-EOF
-
-chmod +x $ROOTPATH/usr/local/bin/rootfs-expand
 
 exit 0
 

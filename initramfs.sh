@@ -13,7 +13,7 @@ timeout 60
 totaltimeout 600
 label centos
 	kernel /vmlinuz-4.4.34-201.el7.armv7hl
-	append enforcing=0 root=UUID=10df37ab-ff7b-44bc-a623-e4c88c11e6da
+	append enforcing=0 root=UUID=4c29f94e-c2db-4436-a443-744aac063574
 	fdtdir /dtb-4.4.34-201.el7.armv7hl
 	initrd /initramfs-4.4.34-201.el7.armv7hl.img
 

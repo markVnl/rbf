@@ -1,17 +1,17 @@
 [INFO ]  All Commands Found. Continuing
 [INFO ]  Arguments Correct. Continuing
-[INFO ]  Xml Template: templates/centos-cubieboard.xml
-[INFO ]  Parsing: templates/centos-cubieboard.xml
-[INFO ]  Successfully Parsed Board Template For: cubieboard
+[INFO ]  Xml Template: templates/centos-cubietruck.xml
+[INFO ]  Parsing: templates/centos-cubietruck.xml
+[INFO ]  Successfully Parsed Board Template For: cubietruck
 [INFO ]  Creating Image File
-[INFO ]  Creating Image: 3G raw CentOS-Userland-7-armv7hl-Minimal-YM-Cubieboard.img
+[INFO ]  Creating Image: 3G raw CentOS-Userland-7-armv7hl-Minimal-YM-CubieTruck.img
 [INFO ]  Creating Partitions
 [INFO ]  Verifying that Primary & Extended partition sizes doesn't exceed image size
 [INFO ]  Image Size: 3072M Parititon Size Sum: 3060M
 [INFO ]  Verifying that Logical partition sizes don't exceed Extended partition image size
-[INFO ]  Creating Partition 1 500M primary ext3 /boot 1d9324c0-a688-4ee5-8fa7-4f4020129ccc
-[INFO ]  Creating Partition 2 512M primary swap swap 99ca1a07-8ed8-4ce1-a133-d840f1ecd0ac
-[INFO ]  Creating Partition 3 2048M primary ext4 / 10df37ab-ff7b-44bc-a623-e4c88c11e6da
+[INFO ]  Creating Partition 1 500M primary ext3 /boot 563aa5e8-f611-49a2-aa03-c30a4f541f28
+[INFO ]  Creating Partition 2 512M primary swap swap 4f98a4b0-1094-4f90-a12a-68ea7a9e96e7
+[INFO ]  Creating Partition 3 2048M primary ext4 / 4c29f94e-c2db-4436-a443-744aac063574
 [INFO ]  Mounting Partitions
 [INFO ]  Mounting Parititon 3 on /tmp/temp/
 [INFO ]  Mounting Parititon 1 on /tmp/temp/boot
@@ -38,10 +38,10 @@
 [INFO ]  Setting root password
 [INFO ]  Setting SELinux status to permissive
 [INFO ]  Running RootFS Build Factory script
-losetup: /dev/loop0: detach failed: No such device or address
+losetup: /dev/loop3: detach failed: No such device or address
 0+0 records in
 0+0 records out
-0 bytes (0 B) copied, 0.000123522 s, 0.0 kB/s
+0 bytes (0 B) copied, 0.000248845 s, 0.0 kB/s
 mke2fs 1.42.9 (28-Dec-2013)
 Discarding device blocks:   1024/512000             done                            
 Filesystem label=
@@ -65,7 +65,7 @@ Creating journal (8192 blocks): done
 Writing superblocks and filesystem accounting information:  0/63     done
 
 Setting up swapspace version 1, size = 524284 KiB
-no label, UUID=99ca1a07-8ed8-4ce1-a133-d840f1ecd0ac
+no label, UUID=4f98a4b0-1094-4f90-a12a-68ea7a9e96e7
 mke2fs 1.42.9 (28-Dec-2013)
 Discarding device blocks:   4096/524288             done                            
 Filesystem label=
@@ -90,16 +90,18 @@ Writing superblocks and filesystem accounting information:  0/16     d
 
 There is no installed groups file.
 Maybe run: yum groups mark convert (see man yum)
-Non-fatal POSTIN scriptlet failure in rpm package centos-userland-release-7-2.1511.el7.centos.0.5.armv7hl
+Non-fatal POSTIN scriptlet failure in rpm package centos-userland-release-7-3.1611.el7.centos.0.1.armv7hl
+Non-fatal POSTIN scriptlet failure in rpm package libsepol-2.5-6.el7.armv7hl
 './etc/fstab' -> '/tmp/temp/etc/fstab'
 './etc/hostname' -> '/tmp/temp/etc/hostname'
 './etc/rbf' -> '/tmp/temp/etc/rbf'
 './etc/rbf/board.xml' -> '/tmp/temp/etc/rbf/board.xml'
 './etc/sysconfig/network-scripts/ifcfg-eth0' -> '/tmp/temp/etc/sysconfig/network-scripts/ifcfg-eth0'
+chpasswd: avc.c:74: avc_context_to_sid_raw: Assertion `avc_running' failed.
 [INFO ]  Successfully Executed rbf.sh
 [INFO ]  Creating Initramfs
-[INFO ]  Board Script: ./boards.d/cubieboard.sh /dev/loop0 none files/cubieboard/u-boot-sunxi-with-spl.bin /tmp/temp none 3 10df37ab-ff7b-44bc-a623-e4c88c11e6da
+[INFO ]  Board Script: ./boards.d/cubietruck.sh /dev/loop3 none files/cubietruck/u-boot-sunxi-with-spl.bin /tmp/temp none 3 4c29f94e-c2db-4436-a443-744aac063574
 
 [INFO ]  Finalize Script: ./boards.d/finalize.sh
 [INFO ]  Clean Up
-[INFO ]  If you need any help, please provide rbf.log rbf.sh initramfs.sh cleanup.sh boardscript.sh templates/centos-cubieboard.xml and the above output.
+[INFO ]  If you need any help, please provide rbf.log rbf.sh initramfs.sh cleanup.sh boardscript.sh templates/centos-cubietruck.xml and the above output.
