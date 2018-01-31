@@ -11,21 +11,6 @@ ROOTUUID=$7
 #echo "Extracting Boot Files"
 #tar Jxvomf $ROOTFILES -C $ROOTPATH
 #sed -i 's/mmcblk0p3/mmcblk0p'$ROOTPARTINDEX'/' $ROOTPATH/boot/cmdline.txt
-<<<<<<< HEAD
-#sed -i 's/IPv6_rpfilter=yes/IPv6_rpfilter=no/' $ROOTPATH/etc/firewalld/firewalld.conf
-
-echo "set autorelabel"
-touch $ROOTPATH/.autorelabel
-
-echo "remove rbf repos"
-rm $ROOTPATH/etc/yum.repos.d/*_rbf.repo
-
-echo "zero the disks freespace"
-dd if=/dev/zero of=$ROOTPATH/zero
-dd if=/dev/zero of=$ROOTPATH/boot/zero
-sync
-rm -f $ROOTPATH/zero $ROOTPATH/boot/zero
-=======
 echo "Creating boot config files for rpi2 .."
 cat > $ROOTPATH/boot/cmdline.txt << EOF
 dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p3 rootfstype=ext4 elevator=deadline rootwait
@@ -60,7 +45,5 @@ If you want to automatically resize your / partition, just type the following (a
 /usr/local/bin/rootfs-expand
 
 EOF
->>>>>>> centos/master
 
 exit 0
-
