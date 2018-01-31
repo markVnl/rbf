@@ -32,8 +32,6 @@ EOF
 
 sed -i 's/IPv6_rpfilter=yes/IPv6_rpfilter=no/' $ROOTPATH/etc/firewalld/firewalld.conf
 
-curl --location https://github.com/raspberrypi/firmware/raw/master/boot/bcm2710-rpi-3-b.dtb > $ROOTPATH/boot/bcm2710-rpi-3-b.dtb
-
 
 # Removing RBF tmp repos
 /bin/rm $ROOTPATH/etc/yum.repos.d/*_rbf.repo
