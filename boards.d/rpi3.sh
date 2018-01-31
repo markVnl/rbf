@@ -16,8 +16,9 @@ cat > $ROOTPATH/boot/cmdline.txt << EOF
 dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p3 rootfstype=ext4 elevator=deadline rootwait selinux=1 security=selinux enforcing=0
 EOF
 cat > $ROOTPATH/boot/config.txt << EOF
-#uncomment to overclock the arm. 700 MHz is the default.
-arm_freq=700# NOOBS Auto-generated Settings:
+#The Pi3 Model B default clock frequency 1200MHz.
+arm_freq=1200
+# NOOBS Auto-generated Settings:
 hdmi_force_hotplug=1
 config_hdmi_boost=4
 overscan_left=24
