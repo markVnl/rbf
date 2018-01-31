@@ -1,0 +1,53 @@
+<template>    
+    <board>rpi3</board>
+    <image size="3G" type="raw" path="Nethserver-7-arm-RaspberryPi3.img"></image>
+    <partitions>
+        <partition size="500M" type="primary" fs="vfat" mountpoint="/boot"></partition>
+        <partition size="512M" type="primary" fs="swap" mountpoint="swap"></partition>
+        <partition size="2G" type="primary" fs="ext4" mountpoint="/"></partition>
+    </partitions>
+    
+    <packages>
+        <installer>yum</installer>
+        <releasever>7</releasever>
+        <group>core,nethserver-arm</group>
+        <package>raspberrypi2-firmware,raspberrypi2-kernel-firmware,net-tools,cloud-utils-growpart,chrony,</package>
+    </packages>
+
+    <stage1loader>none</stage1loader>
+    <uboot>none</uboot>
+    <rootfiles>none</rootfiles>
+    <firmware>none</firmware>
+    <kernel type="stock">
+    </kernel>    
+
+    <config>
+        <hostname>nethpi3.localdomain</hostname>
+        <selinux>disabled</selinux>
+        <rootpass>centos</rootpass>
+        <rootsshkey>none</rootsshkey>
+        <network>
+            <interface name="eth0" config="dhcp">
+            </interface>
+        </network>        
+    </config>
+    
+    <etcoverlay>./etc</etcoverlay>
+    <finalizescript>./boards.d/finalize-nethserver.sh</finalizescript>
+    
+    <distro>centos</distro>
+      <repos>
+        <repo name="centos-base" path="http://mirror.centos.org/altarch/7/os/armhfp/"></repo>
+        <repo name="centos-extras" path="http://mirror.centos.org/altarch/7/extras/armhfp/"></repo>
+        <repo name="centos-updates" path="http://mirror.centos.org/altarch/7/updates/armhfp/"></repo>
+        <repo name="rpi2-kernel" path="http://mirror.centos.org/altarch/7/kernel/armhfp/kernel-rpi2/"></repo>
+        <repo name="nethserver-base" path="http://mirror.framassa.org/nethserver7-arm/7/base/armhfp/"></repo>
+        <repo name="nethserver-updates" path="http://mirror.framassa.org/nethserver7-arm/7/updates/armhfp/"></repo>
+        <repo name="nethserver-epel" path="http://mirror.framassa.org/nethserver7-arm/7/ns-epel/armhfp/"></repo>
+    </repos>
+
+    <workdir>/tmp/temp</workdir>
+    <extlinuxconf>false</extlinuxconf>
+    
+ </template>
+ 
