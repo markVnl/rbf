@@ -41,7 +41,7 @@ cat > $ROOTPATH/root/README << EOF
 == CentOS 7 userland ==
 
 If you want to automatically resize your / partition, just type the following (as root user):
-/usr/local/bin/rootfs-expand
+/usr/bin/rootfs-expand
 
 EOF
 
