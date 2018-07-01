@@ -1,6 +1,6 @@
 <template>    
-    <board>rpi2</board>
-    <image size="3G" type="raw" path="CentOS-Userland-7-armv7hl-Minimal-YM-RaspberryPi2.img"></image>
+    <board>rpi2-kernel</board>
+    <image size="3G" type="raw" path="CentOS-Userland-7-RaspberryPI-Minimal-1804.img"></image>
     <partitions>
         <partition size="500M" type="primary" fs="vfat" mountpoint="/boot"></partition>
         <partition size="512M" type="primary" fs="swap" mountpoint="swap"></partition>
@@ -11,7 +11,7 @@
         <installer>yum</installer>
         <releasever>7</releasever>
         <group>core</group>
-        <package>raspberrypi2-firmware,raspberrypi2-kernel-firmware,net-tools,cloud-utils-growpart,chrony</package>
+   <package>net-tools cloud-utils-growpart chrony uboot-images-armv7 raspberrypi2-kernel raspberrypi2-firmware raspberrypi-vc-utils</package>
     </packages>
 
     <stage1loader>none</stage1loader>
@@ -22,7 +22,7 @@
     </kernel>    
 
     <config>
-        <hostname>centos-rpi2</hostname>
+        <hostname>centos-rpi</hostname>
         <selinux>permissive</selinux>
         <rootpass>centos</rootpass>
         <rootsshkey>none</rootsshkey>
@@ -37,10 +37,10 @@
     
     <distro>centos</distro>
       <repos>
-        <repo name="centos-base" path="http://armv7.dev.centos.org/repos/7/os/armhfp/"></repo>
-        <repo name="centos-extras" path="http://armv7.dev.centos.org/repos/7/extras/armhfp/"></repo>
-        <repo name="centos-updates" path="http://armv7.dev.centos.org/repos/7/updates/armhfp/"></repo>
-        <repo name="rpi2-kernel" path="https://armv7.dev.centos.org/repos/7/kernel/armhfp/kernel-rpi2/"></repo>
+	    <repo name="centos-base" path="http://mirror.centos.org/altarch/7/os/armhfp/"></repo>
+        <repo name="centos-extras" path="http://mirror.centos.org/altarch/7/extras/armhfp/"></repo>
+        <repo name="centos-updates" path="http://mirror.centos.org/altarch/7/updates/armhfp/"></repo>
+        <repo name="rpi2-kernel" path="http://mirror.centos.org/altarch/7/kernel/armhfp/kernel-rpi2/"></repo>
     </repos>
 
     <workdir>/tmp/temp</workdir>

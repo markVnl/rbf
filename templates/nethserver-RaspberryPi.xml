@@ -1,6 +1,6 @@
 <template>    
-    <board>rpi2</board>
-    <image size="3G" type="raw" path="Nethserver-7-arm-RaspberryPi2.img"></image>
+    <board>rpi2-kernel</board>
+    <image size="3G" type="raw" path="Nethserver-7-arm-RaspberryPi.img"></image>
     <partitions>
         <partition size="500M" type="primary" fs="vfat" mountpoint="/boot"></partition>
         <partition size="512M" type="primary" fs="swap" mountpoint="swap"></partition>
@@ -10,8 +10,8 @@
     <packages>
         <installer>yum</installer>
         <releasever>7</releasever>
-        <group>core,nethserver-arm</group>
-        <package>raspberrypi2-firmware,raspberrypi2-kernel-firmware,net-tools,cloud-utils-growpart,chrony,</package>
+        <group>core nethserver-arm</group>
+        <package>net-tools cloud-utils-growpart chrony uboot-images-armv7 raspberrypi2-kernel raspberrypi2-firmware raspberrypi-vc-utils</package>
     </packages>
 
     <stage1loader>none</stage1loader>
@@ -22,7 +22,7 @@
     </kernel>    
 
     <config>
-        <hostname>nethpi2.localdomain</hostname>
+        <hostname>nethpi.localdomain</hostname>
         <selinux>disabled</selinux>
         <rootpass>centos</rootpass>
         <rootsshkey>none</rootsshkey>
@@ -37,13 +37,13 @@
     
     <distro>centos</distro>
       <repos>
-        <repo name="centos-base" path="http://mirror.centos.org/altarch/7/os/armhfp/"></repo>
+	    <repo name="centos-base" path="http://mirror.centos.org/altarch/7/os/armhfp/"></repo>
         <repo name="centos-extras" path="http://mirror.centos.org/altarch/7/extras/armhfp/"></repo>
         <repo name="centos-updates" path="http://mirror.centos.org/altarch/7/updates/armhfp/"></repo>
         <repo name="rpi2-kernel" path="http://mirror.centos.org/altarch/7/kernel/armhfp/kernel-rpi2/"></repo>
-        <repo name="nethserver-base" path="http://mirror.framassa.org/nethserver7-arm/7/base/armhfp/"></repo>
-        <repo name="nethserver-updates" path="http://mirror.framassa.org/nethserver7-arm/7/updates/armhfp/"></repo>
-        <repo name="nethserver-epel" path="http://mirror.framassa.org/nethserver7-arm/7/ns-epel/armhfp/"></repo>
+        <repo name="nethserver-base" path="http://nethdev.havak.lan/nethserver/7-cr/base/armhfp/"></repo>
+        <repo name="nethserver-updates" path="http://nethdev.havak.lan/nethserver/7-cr/updates/armhfp/"></repo>
+        <repo name="nethserver-epel" path="http://nethdev.havak.lan/nethserver/7-cr/ns-epel/armhfp/"></repo>
     </repos>
 
     <workdir>/tmp/temp</workdir>
